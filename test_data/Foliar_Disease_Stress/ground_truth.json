@@ -1,0 +1,71 @@
+{
+  "dataset_name": "Foliar_Disease_Stress",
+  "description": "Mango Leaf Diseases",
+  "expected_classes": [
+    "Anthracnose",
+    "Bacterial_Canker",
+    "Cutting_Weevil",
+    "Die_Back",
+    "Gall_Midge",
+    "Powdery_Mildew",
+    "Sooty_Mould"
+  ],
+  "images": {
+    "test_001.jpg": {
+      "label": "Die_Back",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Die_Back/Die_Back_003.jpg"
+    },
+    "test_002.jpg": {
+      "label": "Cutting_Weevil",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Cutting_Weevil/Cutting_Weevil_004.jpg"
+    },
+    "test_003.jpg": {
+      "label": "Powdery_Mildew",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Powdery_Mildew/Powdery_Mildew_009.jpg"
+    },
+    "test_004.jpg": {
+      "label": "Bacterial_Canker",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Bacterial_Canker/Bacterial_Canker_002.jpg"
+    },
+    "test_005.jpg": {
+      "label": "Cutting_Weevil",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Cutting_Weevil/Cutting_Weevil_006.jpg"
+    },
+    "test_006.jpg": {
+      "label": "Powdery_Mildew",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Powdery_Mildew/Powdery_Mildew_007.jpg"
+    },
+    "test_007.jpg": {
+      "label": "Anthracnose",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Anthracnose/Anthracnose_008.jpg"
+    },
+    "test_008.jpg": {
+      "label": "Die_Back",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Die_Back/Die_Back_009.jpg"
+    },
+    "test_009.jpg": {
+      "label": "Sooty_Mould",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Sooty_Mould/Sooty_Mould_005.jpg"
+    },
+    "test_010.jpg": {
+      "label": "Sooty_Mould",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Sooty_Mould/Sooty_Mould_002.jpg"
+    },
+    "test_011.jpg": {
+      "label": "Anthracnose",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Anthracnose/Anthracnose_009.jpg"
+    },
+    "test_012.jpg": {
+      "label": "Gall_Midge",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Gall_Midge/Gall_Midge_010.jpg"
+    },
+    "test_013.jpg": {
+      "label": "Gall_Midge",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Gall_Midge/Gall_Midge_003.jpg"
+    },
+    "test_014.jpg": {
+      "label": "Bacterial_Canker",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Foliar_Disease_Stress/Bacterial_Canker/Bacterial_Canker_003.jpg"
+    }
+  }
+}

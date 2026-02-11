@@ -1,0 +1,11 @@
+image_name,ground_truth,prediction,correct
+test_001.jpg,MRMS,Moderately_Susceptible_MS,False
+test_002.jpg,Moderately_Resistant_MR,Moderately_Susceptible_MS,False
+test_003.jpg,Moderately_Resistant_MR,Moderately_Susceptible_MS,False
+test_004.jpg,Susceptible_S,Susceptible_S,True
+test_005.jpg,MRMS,Moderately_Susceptible_MS,False
+test_006.jpg,Moderately_Susceptible_MS,Moderately_Susceptible_MS,True
+test_007.jpg,Moderately_Susceptible_MS,Moderately_Susceptible_MS,True
+test_008.jpg,Resistant_R,Resistant_R,True
+test_009.jpg,Susceptible_S,Moderately_Susceptible_MS,False
+test_010.jpg,Resistant_R,Moderately_Resistant_MR,False

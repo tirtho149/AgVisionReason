@@ -1,0 +1,33 @@
+{
+  "total_images": 24,
+  "images_per_class": 2,
+  "seed": 42,
+  "datasets": {
+    "Foliar_Disease_Stress": {
+      "description": "Mango Leaf Diseases",
+      "num_classes": 7,
+      "num_images": 14,
+      "classes": [
+        "Anthracnose",
+        "Bacterial_Canker",
+        "Cutting_Weevil",
+        "Die_Back",
+        "Gall_Midge",
+        "Powdery_Mildew",
+        "Sooty_Mould"
+      ]
+    },
+    "Disease_Severity": {
+      "description": "Yellow Rust Severity Levels",
+      "num_classes": 5,
+      "num_images": 10,
+      "classes": [
+        "Resistant_R",
+        "Moderately_Resistant_MR",
+        "MRMS",
+        "Moderately_Susceptible_MS",
+        "Susceptible_S"
+      ]
+    }
+  }
+}

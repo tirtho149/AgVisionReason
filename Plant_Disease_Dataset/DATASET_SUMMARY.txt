@@ -1,0 +1,27 @@
+======================================================================
+PLANT DISEASE DATASET - CURATION SUMMARY
+======================================================================
+
+Total Diseases: 12
+Images per Disease: 10
+Total Images: 120
+
+----------------------------------------------------------------------
+FOLIAR DISEASE STRESS (Mango Leaf) - 7 diseases
+----------------------------------------------------------------------
+  Anthracnose: 10 images
+  Bacterial Canker: 10 images
+  Cutting Weevil: 10 images
+  Die Back: 10 images
+  Gall Midge: 10 images
+  Powdery Mildew: 10 images
+  Sooty Mould: 10 images
+
+----------------------------------------------------------------------
+DISEASE SEVERITY (Yellow Rust) - 5 diseases
+----------------------------------------------------------------------
+  Moderately Resistant (MR): 10 images
+  Moderately Susceptible (MS): 10 images
+  MRMS: 10 images
+  Resistant (R): 10 images
+  Susceptible (S): 10 images

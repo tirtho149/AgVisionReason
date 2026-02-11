@@ -1,0 +1,53 @@
+{
+  "dataset_name": "Disease_Severity",
+  "description": "Yellow Rust Severity Levels",
+  "expected_classes": [
+    "Resistant_R",
+    "Moderately_Resistant_MR",
+    "MRMS",
+    "Moderately_Susceptible_MS",
+    "Susceptible_S"
+  ],
+  "images": {
+    "test_001.jpg": {
+      "label": "MRMS",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/MRMS/MRMS_005.jpg"
+    },
+    "test_002.jpg": {
+      "label": "Moderately_Resistant_MR",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Moderately_Resistant_MR/Moderately_Resistant_MR_006.jpg"
+    },
+    "test_003.jpg": {
+      "label": "Moderately_Resistant_MR",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Moderately_Resistant_MR/Moderately_Resistant_MR_007.jpg"
+    },
+    "test_004.jpg": {
+      "label": "Susceptible_S",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Susceptible_S/Susceptible_S_008.jpg"
+    },
+    "test_005.jpg": {
+      "label": "MRMS",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/MRMS/MRMS_007.jpg"
+    },
+    "test_006.jpg": {
+      "label": "Moderately_Susceptible_MS",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Moderately_Susceptible_MS/Moderately_Susceptible_MS_009.jpg"
+    },
+    "test_007.jpg": {
+      "label": "Moderately_Susceptible_MS",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Moderately_Susceptible_MS/Moderately_Susceptible_MS_004.jpg"
+    },
+    "test_008.jpg": {
+      "label": "Resistant_R",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Resistant_R/Resistant_R_008.jpg"
+    },
+    "test_009.jpg": {
+      "label": "Susceptible_S",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Susceptible_S/Susceptible_S_004.jpg"
+    },
+    "test_010.jpg": {
+      "label": "Resistant_R",
+      "original_path": "/Users/muhammadarbabarshad/build2026-local/reasoning/Plant_Disease_Dataset/Disease_Severity/Resistant_R/Resistant_R_009.jpg"
+    }
+  }
+}

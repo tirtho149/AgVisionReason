@@ -1,0 +1,15 @@
+image_name,ground_truth,prediction,correct
+test_001.jpg,Die_Back,Gall_Midge,False
+test_002.jpg,Cutting_Weevil,Die_Back,False
+test_003.jpg,Powdery_Mildew,Anthracnose,False
+test_004.jpg,Bacterial_Canker,Anthracnose,False
+test_005.jpg,Cutting_Weevil,Cutting_Weevil,True
+test_006.jpg,Powdery_Mildew,Sooty_Mould,False
+test_007.jpg,Anthracnose,Anthracnose,True
+test_008.jpg,Die_Back,Die_Back,True
+test_009.jpg,Sooty_Mould,Sooty_Mould,True
+test_010.jpg,Sooty_Mould,Sooty_Mould,True
+test_011.jpg,Anthracnose,Anthracnose,True
+test_012.jpg,Gall_Midge,Anthracnose,False
+test_013.jpg,Gall_Midge,Anthracnose,False
+test_014.jpg,Bacterial_Canker,Anthracnose,False

@@ -1,0 +1,89 @@
+{
+  "total_diseases": 12,
+  "images_per_disease": 10,
+  "output_directory": "/content/drive/MyDrive/Plant_Disease_Dataset",
+  "foliar_disease_stress": {
+    "description": "Mango Leaf - Different types of foliar diseases",
+    "count": 7,
+    "diseases": [
+      {
+        "name": "Anthracnose",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Anthracnose"
+      },
+      {
+        "name": "Bacterial Canker",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Bacterial_Canker"
+      },
+      {
+        "name": "Cutting Weevil",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Cutting_Weevil"
+      },
+      {
+        "name": "Die Back",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Die_Back"
+      },
+      {
+        "name": "Gall Midge",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Gall_Midge"
+      },
+      {
+        "name": "Powdery Mildew",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Powdery_Mildew"
+      },
+      {
+        "name": "Sooty Mould",
+        "type": "Foliar Disease Stress",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Foliar_Disease_Stress/Sooty_Mould"
+      }
+    ]
+  },
+  "disease_severity": {
+    "description": "Yellow Rust - Disease severity levels",
+    "count": 5,
+    "diseases": [
+      {
+        "name": "Moderately Resistant (MR)",
+        "type": "Disease Severity",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Disease_Severity/Moderately_Resistant_MR"
+      },
+      {
+        "name": "Moderately Susceptible (MS)",
+        "type": "Disease Severity",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Disease_Severity/Moderately_Susceptible_MS"
+      },
+      {
+        "name": "MRMS",
+        "type": "Disease Severity",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Disease_Severity/MRMS"
+      },
+      {
+        "name": "Resistant (R)",
+        "type": "Disease Severity",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Disease_Severity/Resistant_R"
+      },
+      {
+        "name": "Susceptible (S)",
+        "type": "Disease Severity",
+        "num_images": 10,
+        "directory": "/content/drive/MyDrive/Plant_Disease_Dataset/Disease_Severity/Susceptible_S"
+      }
+    ]
+  }
+}
