@@ -37,13 +37,30 @@ def load_ground_truth(dataset_name: str):
     return data.get("images", {}), data.get("expected_classes", [])
 
 
-def load_results(filepath: Path) -> list:
-    """Load results from CSV file."""
+def load_results_csv(filepath: Path) -> list:
+    """Load results from CSV file (baseline)."""
     if not filepath.exists():
         return []
     with open(filepath, 'r') as f:
         reader = csv.DictReader(f)
         return list(reader)
+
+
+def load_results_from_logs(logs_dir: Path) -> list:
+    """Load results from individual log JSON files (agent)."""
+    if not logs_dir.exists():
+        return []
+    results = []
+    for log_file in sorted(logs_dir.glob("test_*_log.json")):
+        with open(log_file, 'r') as f:
+            log = json.load(f)
+        results.append({
+            "image_name": log["image_name"],
+            "ground_truth": log["ground_truth"],
+            "prediction": log["prediction"],
+            "correct": log["correct"]
+        })
+    return results
 
 
 def calculate_metrics(results: list, expected_classes: list) -> dict:
@@ -194,10 +211,10 @@ def evaluate():
 
         # Load results
         baseline_file = RESULTS_DIR / "baseline" / f"{dataset_name}_predictions.csv"
-        agent_file = RESULTS_DIR / "agent" / f"{dataset_name}_predictions.csv"
+        agent_logs_dir = RESULTS_DIR / "agent" / "logs" / dataset_name
 
-        baseline_results = load_results(baseline_file)
-        agent_results = load_results(agent_file)
+        baseline_results = load_results_csv(baseline_file)
+        agent_results = load_results_from_logs(agent_logs_dir)
 
         # Calculate metrics
         baseline_metrics = calculate_metrics(baseline_results, expected_classes)

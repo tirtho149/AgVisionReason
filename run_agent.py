@@ -7,7 +7,6 @@ Runs separately on each dataset. Saves full reasoning logs.
 import os
 import json
 import subprocess
-import csv
 import re
 from pathlib import Path
 from datetime import datetime
@@ -94,7 +93,7 @@ INSTRUCTIONS:
 1. Read the knowledge base at {abs_symptoms_path} - focus on the section relevant to this dataset
 2. View the target image at {abs_image_path}
 3. Compare visual features to the symptom descriptions
-4. If uncertain, view reference images from the knowledge base
+4. You MUST view reference images for your top 2-3 candidate classes using the EXACT paths listed in the knowledge base (they are relative to {str(PROJECT_DIR)})
 5. Make your prediction from the available classes only
 
 OUTPUT: After your analysis, return a JSON object:
@@ -108,7 +107,8 @@ The prediction must be exactly one of: {expected_classes}"""
                 "claude",
                 "-p", prompt,
                 "--allowedTools", "Read",
-                "--output-format", "json",
+                "--output-format", "stream-json",
+                "--verbose",
                 "--model", "haiku"
             ],
             capture_output=True,
@@ -126,40 +126,46 @@ The prediction must be exactly one of: {expected_classes}"""
                 "success": False
             }
 
-        output = json.loads(result.stdout)
+        # Parse NDJSON lines to extract full reasoning trace
+        trace = []
+        final_result = {}
+        for line in result.stdout.strip().split('\n'):
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
 
-        # Get the full reasoning from result
-        reasoning = output.get("result", "")
+            if obj.get("type") == "assistant":
+                for c in obj.get("message", {}).get("content", []):
+                    if c.get("type") == "text" and c.get("text", "").strip():
+                        trace.append({"role": "assistant", "type": "text", "content": c["text"].strip()})
+                    elif c.get("type") == "tool_use":
+                        trace.append({"role": "assistant", "type": "tool_use", "tool": c["name"], "input": c.get("input", {})})
+            elif obj.get("type") == "result":
+                final_result = obj
 
-        # Extract prediction from the reasoning text
+        # The final assistant text is the reasoning + prediction
+        reasoning = final_result.get("result", "")
         prediction = extract_prediction_from_result(reasoning)
-
-        # Also check structured_output if available
-        if prediction == "UNKNOWN" and "structured_output" in output:
-            so = output.get("structured_output")
-            if so and isinstance(so, dict):
-                prediction = so.get("prediction", prediction)
 
         return {
             "prediction": prediction,
             "reasoning": reasoning,
-            "session_id": output.get("session_id"),
-            "duration_ms": output.get("duration_ms"),
-            "num_turns": output.get("num_turns"),
-            "cost_usd": output.get("total_cost_usd"),
-            "raw_output": output,
+            "trace": trace,
+            "session_id": final_result.get("session_id"),
+            "duration_ms": final_result.get("duration_ms"),
+            "num_turns": final_result.get("num_turns"),
+            "cost_usd": final_result.get("total_cost_usd"),
             "success": True
         }
 
     except subprocess.TimeoutExpired:
-        return {"prediction": "TIMEOUT", "reasoning": "", "success": False}
-    except json.JSONDecodeError as e:
-        return {"prediction": "PARSE_ERROR", "reasoning": "", "error": str(e), "success": False}
+        return {"prediction": "TIMEOUT", "reasoning": "", "trace": [], "success": False}
     except Exception as e:
-        return {"prediction": "ERROR", "reasoning": "", "error": str(e), "success": False}
+        return {"prediction": "ERROR", "reasoning": "", "trace": [], "error": str(e), "success": False}
 
 
-def run_agent_on_dataset(dataset_name: str, logs_dir: Path) -> tuple:
+def run_agent_on_dataset(dataset_name: str, logs_dir: Path, limit: int = None) -> float:
     """Run agent evaluation on a single dataset."""
 
     print(f"\n{'='*60}")
@@ -168,6 +174,8 @@ def run_agent_on_dataset(dataset_name: str, logs_dir: Path) -> tuple:
 
     # Load dataset
     test_images, expected_classes, description = load_dataset(dataset_name)
+    if limit:
+        test_images = test_images[:limit]
 
     print(f"Description: {description}")
     print(f"Classes ({len(expected_classes)}): {expected_classes}")
@@ -178,9 +186,7 @@ def run_agent_on_dataset(dataset_name: str, logs_dir: Path) -> tuple:
     dataset_logs_dir.mkdir(parents=True, exist_ok=True)
 
     # Results storage
-    results = []
     correct = 0
-    all_logs = []
 
     print("\nProcessing images (Claude Code agent)...")
     for i, img_info in enumerate(test_images):
@@ -198,31 +204,23 @@ def run_agent_on_dataset(dataset_name: str, logs_dir: Path) -> tuple:
         if is_correct:
             correct += 1
 
-        # Save individual log
+        # Save individual log (the only output per image)
         log_entry = {
             "image_name": image_name,
             "ground_truth": ground_truth,
             "prediction": prediction,
             "correct": is_correct,
             "reasoning": classification.get("reasoning", ""),
+            "trace": classification.get("trace", []),
             "duration_ms": classification.get("duration_ms"),
             "num_turns": classification.get("num_turns"),
             "cost_usd": classification.get("cost_usd"),
             "session_id": classification.get("session_id")
         }
-        all_logs.append(log_entry)
 
-        # Save individual reasoning log
         log_file = dataset_logs_dir / f"{image_name.replace('.jpg', '')}_log.json"
         with open(log_file, 'w') as f:
             json.dump(log_entry, f, indent=2)
-
-        results.append({
-            "image_name": image_name,
-            "ground_truth": ground_truth,
-            "prediction": prediction,
-            "correct": is_correct
-        })
 
         status = "OK" if is_correct else f"WRONG (predicted: {prediction})"
         print(status)
@@ -230,42 +228,25 @@ def run_agent_on_dataset(dataset_name: str, logs_dir: Path) -> tuple:
         # Show brief reasoning
         reasoning = classification.get("reasoning", "")
         if reasoning:
-            # Show first 200 chars of reasoning
             preview = reasoning[:200].replace('\n', ' ')
             print(f"  Reasoning: {preview}...")
 
     # Calculate accuracy
     accuracy = (correct / len(test_images)) * 100 if test_images else 0
 
-    # Save results CSV
-    output_file = RESULTS_DIR / f"{dataset_name}_predictions.csv"
-    with open(output_file, 'w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=["image_name", "ground_truth", "prediction", "correct"])
-        writer.writeheader()
-        writer.writerows(results)
-
-    # Save all logs as single JSON
-    all_logs_file = dataset_logs_dir / "all_logs.json"
-    with open(all_logs_file, 'w') as f:
-        json.dump({
-            "dataset": dataset_name,
-            "description": description,
-            "expected_classes": expected_classes,
-            "accuracy": accuracy,
-            "correct": correct,
-            "total": len(test_images),
-            "logs": all_logs
-        }, f, indent=2)
-
     print(f"\n  Results: {correct}/{len(test_images)} correct ({accuracy:.1f}%)")
-    print(f"  Predictions: {output_file}")
-    print(f"  Full logs: {dataset_logs_dir}/")
+    print(f"  Logs: {dataset_logs_dir}/")
 
-    return results, accuracy
+    return accuracy
 
 
-def run_agent():
-    """Run agent evaluation on all datasets."""
+def run_agent(dataset_filter=None, limit=None):
+    """Run agent evaluation.
+
+    Args:
+        dataset_filter: Run only this dataset (e.g. 'Foliar_Disease_Stress')
+        limit: Max number of images per dataset (e.g. 2)
+    """
 
     print("=" * 60)
     print("AGENT EVALUATION (Claude Code Headless, Per Dataset)")
@@ -283,11 +264,15 @@ def run_agent():
         return
 
     datasets = get_available_datasets()
+    if dataset_filter:
+        datasets = [d for d in datasets if d == dataset_filter]
     if not datasets:
         print(f"\nERROR: No datasets found in {TEST_DATA_DIR}")
         return
 
-    print(f"\nDatasets found: {datasets}")
+    print(f"\nDatasets: {datasets}")
+    if limit:
+        print(f"Limit: {limit} images per dataset")
     print(f"Knowledge base: {SYMPTOMS_FILE}")
 
     # Create results and logs directories
@@ -298,15 +283,15 @@ def run_agent():
     # Run on each dataset
     all_results = {}
     for dataset_name in datasets:
-        results, accuracy = run_agent_on_dataset(dataset_name, logs_dir)
-        all_results[dataset_name] = {"results": results, "accuracy": accuracy}
+        accuracy = run_agent_on_dataset(dataset_name, logs_dir, limit=limit)
+        all_results[dataset_name] = accuracy
 
     # Print summary
     print("\n" + "=" * 60)
     print("AGENT SUMMARY")
     print("=" * 60)
-    for dataset_name, data in all_results.items():
-        print(f"  {dataset_name}: {data['accuracy']:.1f}%")
+    for dataset_name, accuracy in all_results.items():
+        print(f"  {dataset_name}: {accuracy:.1f}%")
 
     print(f"\nFull logs saved to: {logs_dir}/")
 
@@ -314,4 +299,15 @@ def run_agent():
 
 
 if __name__ == "__main__":
-    run_agent()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", type=str, help="Run only this dataset")
+    parser.add_argument("--limit", type=int, help="Max images per dataset")
+    args = parser.parse_args()
+    run_agent(dataset_filter=args.dataset, limit=args.limit)
+
+    # Examples to run:
+#   - python run_agent.py --dataset Foliar_Disease_Stress --limit 1                                                                                                                                          
+#   - python run_agent.py --dataset Foliar_Disease_Stress --limit 3
+#   - python run_agent.py --dataset Disease_Severity --limit 2                                                                                                                                               
+#   - python run_agent.py (runs everything)
