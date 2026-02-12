@@ -10,7 +10,7 @@ Generated using GPT-4 for use with Claude Haiku classification.
 ### Anthracnose
 
 **Symptoms:**
-Anthracnose on mango tree leaves is characterized by dark brown to black irregularly shaped lesions, often forming along the veins. The spots may coalesce to cover larger areas, and lesions typically have a water-soaked appearance leading to necrotic tissue as they mature. Leaves often exhibit a distinct yellow halo surrounding the lesions. Over time, the affected areas may become dry and brittle, giving a slightly sunken texture. These features help distinguish anthracnose from other foliar diseases in mango.
+Anthracnose on mango leaves appears as dark brown to black FLAT SUNKEN spots or lesions that look like they are embedded INTO the leaf tissue (not sitting on top like sooty mould, not raised like gall midge). The lesions are irregular or oval shaped, often with a lighter tan/brown center and darker brown-black edges. A key feature is that lesions may have HOLES where dead tissue has fallen out, and leaf edges often look torn or eaten away where lesions reached the margin. On tan/brown colored leaves, anthracnose shows as darker patches with visible water-drop-like blistering or warty texture on the surface. Severely affected leaves turn mostly brown/tan with the green midrib still visible. KEY DIFFERENCE FROM OTHER DISEASES: Anthracnose produces flat sunken lesions embedded in the leaf (not raised bumps like Gall Midge), with holes and eaten-away margins (not a coating like Sooty Mould), and affects scattered areas of the leaf (not progressive tip-to-base browning like Die Back).
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Anthracnose/Anthracnose_001.jpg
@@ -22,7 +22,7 @@ Anthracnose on mango tree leaves is characterized by dark brown to black irregul
 ### Bacterial Canker
 
 **Symptoms:**
-Bacterial canker on mango tree leaves manifests as irregular, small, dark brown to black water-soaked lesions surrounded by a yellow halo. These lesions often become necrotic with time, giving the leaf a scorched appearance. The spots may be angular or circular and are typically scattered randomly or along the leaf veins. A greasy or oily texture can sometimes be observed on the leaf surface, particularly in humid conditions, which helps differentiate it from fungal diseases.
+Bacterial canker on mango leaves initially appears as small water-soaked spots (1-3 mm in diameter) that enlarge into raised, black, angular lesions limited by leaf veins and surrounded by a prominent chlorotic (yellow) halo. The angular shape constrained by venation is a key distinguishing feature, giving the spots a geometric rather than rounded appearance. As the disease progresses, individual lesions may coalesce into large necrotic patches, and a greasy or oily margin is often visible around active lesions, especially in humid conditions. In severe infections, bacterial ooze may be observed exuding from the lesions, and affected leaves show extensive yellowing before dropping prematurely. The raised, dark appearance of spots combined with the characteristic yellow halo and angular shape distinguishes bacterial canker from fungal leaf spots.
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Bacterial_Canker/Bacterial_Canker_001.jpg
@@ -34,7 +34,7 @@ Bacterial canker on mango tree leaves manifests as irregular, small, dark brown 
 ### Cutting Weevil
 
 **Symptoms:**
-Cutting Weevil damage on mango tree leaves is characterized by distinct, semicircular notches or cuts along the leaf edges, which are a result of adult weevils feeding. The notches give the leaves a scalloped appearance. Unlike other diseases, this mechanical damage does not involve discoloration, lesions, or texture changes like wilting or necrosis. The uniformity of the cuts and their location along the outer perimeter is a unique identifier distinguishing it from other foliar diseases.
+Cutting weevil damage on mango leaves is identified by brown, curled, and crumpled young leaves caused by adult weevils scraping the surface layers of tender pinkish new flush. The female weevil excavates small cavities on either side of the midrib on the lower surface, then cuts the leaf near its base, causing partially severed or completely detached leaves to hang or fall to the ground. The most obvious visual sign is the presence of cut leaf pieces beneath the tree and stripped, leafless shoots visible from a distance. Affected leaves show "windowpane" damage between the veins where the surface tissue has been scraped away, leaving translucent patches. Unlike disease-caused damage, cutting weevil produces mechanical injury patterns—torn edges, irregular cuts near the petiole, and contorted or twisted leaf shapes rather than spots, lesions, or discoloration.
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Cutting_Weevil/Cutting_Weevil_001.jpg
@@ -46,7 +46,7 @@ Cutting Weevil damage on mango tree leaves is characterized by distinct, semicir
 ### Die Back
 
 **Symptoms:**
-Die Back disease on mango tree leaves is characterized by initial leaf tip necrosis that progresses along the midrib. The affected areas exhibit dark brown, irregular patches with clearly defined margins. Surrounding tissue may display varying shades of yellow or bronze, creating a distinct contrast against healthy green foliage. The leaves may become dry and brittle, with noticeable curling or bending downwards. Unique identifiers include the consistent progression from the tips downwards and the coexistence of stem dieback on the same branches.
+Die back disease on mango leaves is recognized by the progressive darkening, wilting, and drying of leaves starting from the tips of twigs and extending inward toward the main branches. Affected leaves show browning of veins followed by upward curling, withering, and eventual drop from the tree, often leaving bare, defoliated branches. The bark on affected twigs and branches becomes discolored, turning darker than healthy tissue, and in advanced stages, gummy exudation (gumming) appears as small droplets on twigs that may increase to cover entire branches. The disease typically shows a gradient pattern—leaves at the branch tips are completely dead and dry while those closer to the trunk may still show partial green with progressive browning. The combination of twig dieback with darkened bark, leaf curling, defoliation, and gum secretion on the same branch is the key visual identifier that distinguishes die back from other mango leaf diseases.
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Die_Back/Die_Back_001.jpg
@@ -58,7 +58,7 @@ Die Back disease on mango tree leaves is characterized by initial leaf tip necro
 ### Gall Midge
 
 **Symptoms:**
-Gall Midge disease on mango tree leaves is characterized by small, reddish to brownish galls forming on the underside of leaves, often near midribs. These galls are initially smooth but may become rough and textured as they mature. The galls typically appear in clusters, causing the leaves to exhibit slight upward curling or crinkling. Unlike other diseases, the presence of these distinct, clustered galls with a reddish hue is a unique symptom, key for identification by a machine learning model.
+Gall midge damage on mango leaves produces distinctive RAISED, 3D BUMP-LIKE GALLS that protrude visibly from the leaf surface — these are NOT flat spots or discoloration. Each gall is a small dome or cone shape (2-3 mm) that casts a shadow and has clear depth/height when viewed from the side. The galls are sparsely scattered on an otherwise GREEN and HEALTHY-looking leaf — the leaf background remains green, not darkened or coated. Galls may be reddish-brown or dark brown. As galls mature, exit holes appear creating "shot holes" in the leaf. KEY DIFFERENCE FROM OTHER DISEASES: Gall midge galls are raised 3D bumps on a green leaf, NOT flat dark spots (Sooty Mould), NOT sunken lesions (Anthracnose), and NOT angular spots with yellow halos (Bacterial Canker).
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Gall_Midge/Gall_Midge_001.jpg
@@ -70,7 +70,7 @@ Gall Midge disease on mango tree leaves is characterized by small, reddish to br
 ### Powdery Mildew
 
 **Symptoms:**
-Powdery mildew on mango tree leaves is characterized by a distinctive white or grayish powdery coating that primarily appears on the upper surface of young leaves. This fungal growth starts as small, circular patches that can expand and coalesce, often giving the leaf a mottled appearance. Affected areas may display some leaf curling or distortion and the underlying tissue can yellow slightly. The powdery texture is a key identifier, distinguishing it from other fungal diseases that produce more visible lesions or wet, untreated spots.
+Powdery mildew on mango leaves appears as a characteristic white or grayish powdery fungal growth that typically begins on the underside of young leaves and spreads to cover both surfaces. The infection starts as small scattered patches of white powdery mycelium that expand and coalesce to cover large areas, and on very susceptible cultivars, youngest leaves may become completely coated with fungal spores. When the white powdery growth weathers away or is disturbed, the underlying tissue reveals purple-brown to brownish blotches, which is a key diagnostic feature on older infected leaves. Affected leaves often curl downward and become distorted, with grey necrotic lesions developing on the upper leaf surface, and in severe cases leaves turn completely brown and dry before dropping. The distinctive floury white coating that can be rubbed off to reveal discolored tissue beneath is the primary visual identifier separating powdery mildew from other mango leaf diseases.
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Powdery_Mildew/Powdery_Mildew_001.jpg
@@ -82,7 +82,7 @@ Powdery mildew on mango tree leaves is characterized by a distinctive white or g
 ### Sooty Mould
 
 **Symptoms:**
-Sooty mold on mango tree leaves manifests as a superficial, black, sooty coating or film covering the upper leaf surfaces. The mold appears in irregular patches, often forming a continuous layer but not penetrating the leaf tissue itself. The texture is generally dry and powdery, easily scraped off with a fingernail. It is distinctively associated with honeydew secretions from sap-sucking insects like aphids or scales, which can help differentiate it from diseases causing intrinsic leaf damage or necrosis.
+Sooty mould on mango leaves appears as a SUPERFICIAL dark coating or film that sits ON TOP of the leaf surface, like soot or dust was sprinkled on it. It can appear as numerous tiny dark speckles densely scattered across the leaf giving a "dirty" or "dusty" look, OR as larger dark smudgy patches that merge together. The key visual feature is that the dark material looks like it's SITTING ON the leaf surface (not embedded in the tissue) — the leaf underneath is still green. The spots/coating are FLAT (not raised like gall midge bumps) and do NOT have yellow halos (unlike bacterial canker). The overall impression is of a leaf that looks unwashed or sooty. KEY DIFFERENCE FROM OTHER DISEASES: Sooty mould produces a superficial dirty/dusty coating of many tiny dark speckles or smudges on a green leaf, NOT raised bumps (Gall Midge), NOT distinct lesions with halos (Bacterial Canker/Anthracnose), and NOT large necrotic brown patches (Die Back).
 
 **Reference Images:**
 - Plant_Disease_Dataset/Foliar_Disease_Stress/Sooty_Mould/Sooty_Mould_001.jpg
