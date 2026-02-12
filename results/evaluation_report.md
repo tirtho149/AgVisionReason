@@ -46,3 +46,4 @@ Generated: 2026-02-11 20:32:34
 | Gall_Midge | 0/2 | 1/2 | +50% |
 | Powdery_Mildew | 0/2 | 1/2 | +50% |
 | Sooty_Mould | 2/2 | 0/2 | -100% |
+ 
