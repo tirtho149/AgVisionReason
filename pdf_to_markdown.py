@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
 Convert a PDF file to well-formatted Markdown using Claude's PDF support API.
-source ~/miniconda3/etc/profile.d/conda.sh && conda       
-  activate vl-reasoning && python /Users/muhammadarbabarshad
-  /build2026-local/reasoning/pdf_to_markdown.py /Users/muham
-  madarbabarshad/build2026-local/reasoning/soybean.pdf
+source ~/miniconda3/etc/profile.d/conda.sh && conda activate vl-reasoning && python /Users/muhammadarbabarshad/build2026-local/reasoning/pdf_to_markdown.py /Users/muhammadarbabarshad/build2026-local/reasoning/soybean-compressed.pdf
 """
 
 import os
